@@ -1,0 +1,35 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Menu IsMainMenu="True" VerticalAlignment="Top">
+            <MenuItem Header="_File" >
+                <MenuItem Header="Put Image" Click="MenuItem_Click_1"/>
+                <Separator/>
+                <MenuItem Header="Get images" Click="MenuItem_Click_2" />
+            </MenuItem>
+            <MenuItem Header="_Data" >
+                <DatePicker Name="date" SelectedDateChanged="date_SelectedDateChanged"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="About" Click="MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <ListView x:Name="lstData"
+          ItemsSource="{Binding}" Margin="0,18,0,0" MouseDoubleClick="lstData_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                        <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding ID}" />
+                        <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Data" Width="150" DisplayMemberBinding="{Binding Data}" />
+                        <GridViewColumn Header="Size" Width="150" DisplayMemberBinding="{Binding Size}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
