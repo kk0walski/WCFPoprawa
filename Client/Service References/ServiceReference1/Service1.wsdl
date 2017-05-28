@@ -106,7 +106,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:20009/Strumien</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-24421S3\karol</Upn>
+          <Upn>DESKTOP-K67V8IM\karol</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
