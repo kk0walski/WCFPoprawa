@@ -16,89 +16,389 @@ namespace Client.ServiceReference1 {
     public interface IDuplexOperations {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/getLater")]
-        void getLater(System.DateTime data);
+        void getLater(Client.ServiceReference1.getLater request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/getLater")]
-        System.Threading.Tasks.Task getLaterAsync(System.DateTime data);
+        System.Threading.Tasks.Task getLaterAsync(Client.ServiceReference1.getLater request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/addRecord")]
-        void addRecord(string nazwa);
+        void addRecord(Client.ServiceReference1.addRecord request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/addRecord")]
-        System.Threading.Tasks.Task addRecordAsync(string nazwa);
+        System.Threading.Tasks.Task addRecordAsync(Client.ServiceReference1.addRecord request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/getAll")]
-        void getAll();
+        void getAll(Client.ServiceReference1.getAll request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/getAll")]
-        System.Threading.Tasks.Task getAllAsync();
+        System.Threading.Tasks.Task getAllAsync(Client.ServiceReference1.getAll request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/inSet")]
-        void inSet(string namePicture);
+        void inSet(Client.ServiceReference1.inSet request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/inSet")]
-        System.Threading.Tasks.Task inSetAsync(string namePicture);
+        System.Threading.Tasks.Task inSetAsync(Client.ServiceReference1.inSet request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getPathFromId", ReplyAction="http://tempuri.org/IDuplexOperations/getPathFromIdResponse")]
-        string getPathFromId(int id);
+        Client.ServiceReference1.getPathFromIdResponse getPathFromId(Client.ServiceReference1.getPathFromIdRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getPathFromId", ReplyAction="http://tempuri.org/IDuplexOperations/getPathFromIdResponse")]
-        System.Threading.Tasks.Task<string> getPathFromIdAsync(int id);
+        System.Threading.Tasks.Task<Client.ServiceReference1.getPathFromIdResponse> getPathFromIdAsync(Client.ServiceReference1.getPathFromIdRequest request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/getSize")]
-        void getSize();
+        void getSize(Client.ServiceReference1.getSize request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/getSize")]
-        System.Threading.Tasks.Task getSizeAsync();
+        System.Threading.Tasks.Task getSizeAsync(Client.ServiceReference1.getSize request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/resaizeImage")]
-        void resaizeImage(int id, int width, int height);
+        void resaizeImage(Client.ServiceReference1.resaizeImage request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/resaizeImage")]
-        System.Threading.Tasks.Task resaizeImageAsync(int id, int width, int height);
+        System.Threading.Tasks.Task resaizeImageAsync(Client.ServiceReference1.resaizeImage request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getPath", ReplyAction="http://tempuri.org/IDuplexOperations/getPathResponse")]
-        string getPath(string name);
+        Client.ServiceReference1.getPathResponse getPath(Client.ServiceReference1.getPathRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getPath", ReplyAction="http://tempuri.org/IDuplexOperations/getPathResponse")]
-        System.Threading.Tasks.Task<string> getPathAsync(string name);
+        System.Threading.Tasks.Task<Client.ServiceReference1.getPathResponse> getPathAsync(Client.ServiceReference1.getPathRequest request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/getName")]
-        void getName(string name);
+        void getName(Client.ServiceReference1.getName request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/getName")]
-        System.Threading.Tasks.Task getNameAsync(string name);
+        System.Threading.Tasks.Task getNameAsync(Client.ServiceReference1.getName request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getID", ReplyAction="http://tempuri.org/IDuplexOperations/getIDResponse")]
-        int getID();
+        Client.ServiceReference1.getIDResponse getID(Client.ServiceReference1.getIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getID", ReplyAction="http://tempuri.org/IDuplexOperations/getIDResponse")]
-        System.Threading.Tasks.Task<int> getIDAsync();
+        System.Threading.Tasks.Task<Client.ServiceReference1.getIDResponse> getIDAsync(Client.ServiceReference1.getIDRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/setNazwa", ReplyAction="http://tempuri.org/IDuplexOperations/setNazwaResponse")]
-        void setNazwa(string name);
+        Client.ServiceReference1.setNazwaResponse setNazwa(Client.ServiceReference1.setNazwaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/setNazwa", ReplyAction="http://tempuri.org/IDuplexOperations/setNazwaResponse")]
-        System.Threading.Tasks.Task setNazwaAsync(string name);
+        System.Threading.Tasks.Task<Client.ServiceReference1.setNazwaResponse> setNazwaAsync(Client.ServiceReference1.setNazwaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getImageData", ReplyAction="http://tempuri.org/IDuplexOperations/getImageDataResponse")]
-        Contract.ImageData getImageData(int id);
+        Client.ServiceReference1.getImageDataResponse getImageData(Client.ServiceReference1.getImageDataRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getImageData", ReplyAction="http://tempuri.org/IDuplexOperations/getImageDataResponse")]
-        System.Threading.Tasks.Task<Contract.ImageData> getImageDataAsync(int id);
+        System.Threading.Tasks.Task<Client.ServiceReference1.getImageDataResponse> getImageDataAsync(Client.ServiceReference1.getImageDataRequest request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IDuplexOperationsCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/Wynik")]
-        void Wynik(string result);
+        void Wynik(Client.ServiceReference1.Wynik request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/Kolekcja")]
-        void Kolekcja([System.ServiceModel.MessageParameterAttribute(Name="kolekcja")] System.Collections.Generic.List<Contract.ListItem> kolekcja1);
+        void Kolekcja(Client.ServiceReference1.Kolekcja request);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/Warunek")]
-        void Warunek(bool value);
+        void Warunek(Client.ServiceReference1.Warunek request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getLater", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getLater {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public System.DateTime data;
+        
+        public getLater() {
+        }
+        
+        public getLater(System.DateTime data) {
+            this.data = data;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="addRecord", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class addRecord {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string nazwa;
+        
+        public addRecord() {
+        }
+        
+        public addRecord(string nazwa) {
+            this.nazwa = nazwa;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getAll", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getAll {
+        
+        public getAll() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="inSet", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class inSet {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string namePicture;
+        
+        public inSet() {
+        }
+        
+        public inSet(string namePicture) {
+            this.namePicture = namePicture;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getPathFromId", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getPathFromIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int id;
+        
+        public getPathFromIdRequest() {
+        }
+        
+        public getPathFromIdRequest(int id) {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getPathFromIdResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getPathFromIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string getPathFromIdResult;
+        
+        public getPathFromIdResponse() {
+        }
+        
+        public getPathFromIdResponse(string getPathFromIdResult) {
+            this.getPathFromIdResult = getPathFromIdResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getSize", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getSize {
+        
+        public getSize() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="resaizeImage", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class resaizeImage {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int id;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int width;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public int height;
+        
+        public resaizeImage() {
+        }
+        
+        public resaizeImage(int id, int width, int height) {
+            this.id = id;
+            this.width = width;
+            this.height = height;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getPath", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getPathRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string name;
+        
+        public getPathRequest() {
+        }
+        
+        public getPathRequest(string name) {
+            this.name = name;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getPathResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getPathResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string getPathResult;
+        
+        public getPathResponse() {
+        }
+        
+        public getPathResponse(string getPathResult) {
+            this.getPathResult = getPathResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getName", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getName {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string name;
+        
+        public getName() {
+        }
+        
+        public getName(string name) {
+            this.name = name;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getID", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getIDRequest {
+        
+        public getIDRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getIDResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getIDResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int getIDResult;
+        
+        public getIDResponse() {
+        }
+        
+        public getIDResponse(int getIDResult) {
+            this.getIDResult = getIDResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="setNazwa", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class setNazwaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string name;
+        
+        public setNazwaRequest() {
+        }
+        
+        public setNazwaRequest(string name) {
+            this.name = name;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="setNazwaResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class setNazwaResponse {
+        
+        public setNazwaResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getImageData", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getImageDataRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int id;
+        
+        public getImageDataRequest() {
+        }
+        
+        public getImageDataRequest(int id) {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getImageDataResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class getImageDataResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Contract.ImageData getImageDataResult;
+        
+        public getImageDataResponse() {
+        }
+        
+        public getImageDataResponse(Contract.ImageData getImageDataResult) {
+            this.getImageDataResult = getImageDataResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Wynik", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Wynik {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string result;
+        
+        public Wynik() {
+        }
+        
+        public Wynik(string result) {
+            this.result = result;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Kolekcja", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Kolekcja {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="kolekcja", Namespace="http://tempuri.org/", Order=0)]
+        public System.Collections.Generic.List<Contract.ListItem> kolekcja1;
+        
+        public Kolekcja() {
+        }
+        
+        public Kolekcja(System.Collections.Generic.List<Contract.ListItem> kolekcja1) {
+            this.kolekcja1 = kolekcja1;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Warunek", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class Warunek {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool value;
+        
+        public Warunek() {
+        }
+        
+        public Warunek(bool value) {
+            this.value = value;
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -129,100 +429,100 @@ namespace Client.ServiceReference1 {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void getLater(System.DateTime data) {
-            base.Channel.getLater(data);
+        public void getLater(Client.ServiceReference1.getLater request) {
+            base.Channel.getLater(request);
         }
         
-        public System.Threading.Tasks.Task getLaterAsync(System.DateTime data) {
-            return base.Channel.getLaterAsync(data);
+        public System.Threading.Tasks.Task getLaterAsync(Client.ServiceReference1.getLater request) {
+            return base.Channel.getLaterAsync(request);
         }
         
-        public void addRecord(string nazwa) {
-            base.Channel.addRecord(nazwa);
+        public void addRecord(Client.ServiceReference1.addRecord request) {
+            base.Channel.addRecord(request);
         }
         
-        public System.Threading.Tasks.Task addRecordAsync(string nazwa) {
-            return base.Channel.addRecordAsync(nazwa);
+        public System.Threading.Tasks.Task addRecordAsync(Client.ServiceReference1.addRecord request) {
+            return base.Channel.addRecordAsync(request);
         }
         
-        public void getAll() {
-            base.Channel.getAll();
+        public void getAll(Client.ServiceReference1.getAll request) {
+            base.Channel.getAll(request);
         }
         
-        public System.Threading.Tasks.Task getAllAsync() {
-            return base.Channel.getAllAsync();
+        public System.Threading.Tasks.Task getAllAsync(Client.ServiceReference1.getAll request) {
+            return base.Channel.getAllAsync(request);
         }
         
-        public void inSet(string namePicture) {
-            base.Channel.inSet(namePicture);
+        public void inSet(Client.ServiceReference1.inSet request) {
+            base.Channel.inSet(request);
         }
         
-        public System.Threading.Tasks.Task inSetAsync(string namePicture) {
-            return base.Channel.inSetAsync(namePicture);
+        public System.Threading.Tasks.Task inSetAsync(Client.ServiceReference1.inSet request) {
+            return base.Channel.inSetAsync(request);
         }
         
-        public string getPathFromId(int id) {
-            return base.Channel.getPathFromId(id);
+        public Client.ServiceReference1.getPathFromIdResponse getPathFromId(Client.ServiceReference1.getPathFromIdRequest request) {
+            return base.Channel.getPathFromId(request);
         }
         
-        public System.Threading.Tasks.Task<string> getPathFromIdAsync(int id) {
-            return base.Channel.getPathFromIdAsync(id);
+        public System.Threading.Tasks.Task<Client.ServiceReference1.getPathFromIdResponse> getPathFromIdAsync(Client.ServiceReference1.getPathFromIdRequest request) {
+            return base.Channel.getPathFromIdAsync(request);
         }
         
-        public void getSize() {
-            base.Channel.getSize();
+        public void getSize(Client.ServiceReference1.getSize request) {
+            base.Channel.getSize(request);
         }
         
-        public System.Threading.Tasks.Task getSizeAsync() {
-            return base.Channel.getSizeAsync();
+        public System.Threading.Tasks.Task getSizeAsync(Client.ServiceReference1.getSize request) {
+            return base.Channel.getSizeAsync(request);
         }
         
-        public void resaizeImage(int id, int width, int height) {
-            base.Channel.resaizeImage(id, width, height);
+        public void resaizeImage(Client.ServiceReference1.resaizeImage request) {
+            base.Channel.resaizeImage(request);
         }
         
-        public System.Threading.Tasks.Task resaizeImageAsync(int id, int width, int height) {
-            return base.Channel.resaizeImageAsync(id, width, height);
+        public System.Threading.Tasks.Task resaizeImageAsync(Client.ServiceReference1.resaizeImage request) {
+            return base.Channel.resaizeImageAsync(request);
         }
         
-        public string getPath(string name) {
-            return base.Channel.getPath(name);
+        public Client.ServiceReference1.getPathResponse getPath(Client.ServiceReference1.getPathRequest request) {
+            return base.Channel.getPath(request);
         }
         
-        public System.Threading.Tasks.Task<string> getPathAsync(string name) {
-            return base.Channel.getPathAsync(name);
+        public System.Threading.Tasks.Task<Client.ServiceReference1.getPathResponse> getPathAsync(Client.ServiceReference1.getPathRequest request) {
+            return base.Channel.getPathAsync(request);
         }
         
-        public void getName(string name) {
-            base.Channel.getName(name);
+        public void getName(Client.ServiceReference1.getName request) {
+            base.Channel.getName(request);
         }
         
-        public System.Threading.Tasks.Task getNameAsync(string name) {
-            return base.Channel.getNameAsync(name);
+        public System.Threading.Tasks.Task getNameAsync(Client.ServiceReference1.getName request) {
+            return base.Channel.getNameAsync(request);
         }
         
-        public int getID() {
-            return base.Channel.getID();
+        public Client.ServiceReference1.getIDResponse getID(Client.ServiceReference1.getIDRequest request) {
+            return base.Channel.getID(request);
         }
         
-        public System.Threading.Tasks.Task<int> getIDAsync() {
-            return base.Channel.getIDAsync();
+        public System.Threading.Tasks.Task<Client.ServiceReference1.getIDResponse> getIDAsync(Client.ServiceReference1.getIDRequest request) {
+            return base.Channel.getIDAsync(request);
         }
         
-        public void setNazwa(string name) {
-            base.Channel.setNazwa(name);
+        public Client.ServiceReference1.setNazwaResponse setNazwa(Client.ServiceReference1.setNazwaRequest request) {
+            return base.Channel.setNazwa(request);
         }
         
-        public System.Threading.Tasks.Task setNazwaAsync(string name) {
-            return base.Channel.setNazwaAsync(name);
+        public System.Threading.Tasks.Task<Client.ServiceReference1.setNazwaResponse> setNazwaAsync(Client.ServiceReference1.setNazwaRequest request) {
+            return base.Channel.setNazwaAsync(request);
         }
         
-        public Contract.ImageData getImageData(int id) {
-            return base.Channel.getImageData(id);
+        public Client.ServiceReference1.getImageDataResponse getImageData(Client.ServiceReference1.getImageDataRequest request) {
+            return base.Channel.getImageData(request);
         }
         
-        public System.Threading.Tasks.Task<Contract.ImageData> getImageDataAsync(int id) {
-            return base.Channel.getImageDataAsync(id);
+        public System.Threading.Tasks.Task<Client.ServiceReference1.getImageDataResponse> getImageDataAsync(Client.ServiceReference1.getImageDataRequest request) {
+            return base.Channel.getImageDataAsync(request);
         }
     }
 }

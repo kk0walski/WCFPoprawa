@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0318fa5d-7b22-48b9-9df3-4ab219bd0d83" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4ad4b4be-59a9-4705-942b-e7679ae551ac" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -7,7 +7,7 @@
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
     <GenerateInternalTypes>false</GenerateInternalTypes>
-    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
     <NamespaceMappings />
     <CollectionMappings>
       <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
@@ -21,14 +21,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:10009" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:10009/Serwis1" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="2caf6bce-2546-483c-a25e-1f43045387de" SourceId="1" SourceUrl="http://localhost:10009/?xsd=xsd2" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="ec5964f0-9b83-49e4-b4fb-9b90076b6d94" SourceId="1" SourceUrl="http://localhost:10009/?disco" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="0e6cb9bd-af79-4500-80e8-c2013b03bb23" SourceId="1" SourceUrl="http://localhost:10009/?xsd=xsd0" />
-    <MetadataFile FileName="DuplexOperations.wsdl" MetadataType="Wsdl" ID="e840ab06-f40d-4374-a8d4-a1608abe0a71" SourceId="1" SourceUrl="http://localhost:10009/?wsdl" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="647f75f5-8427-4a6f-bcfa-53b57d0927df" SourceId="1" SourceUrl="http://localhost:10009/?xsd=xsd1" />
+    <MetadataFile FileName="Serwis1.xsd" MetadataType="Schema" ID="098f1919-3300-49d9-85df-f4bbf1de9b74" SourceId="1" SourceUrl="http://localhost:10009/Serwis1?xsd=xsd2" />
+    <MetadataFile FileName="Serwis1.disco" MetadataType="Disco" ID="d1f08c2f-c655-4d38-b42f-aab08484b17e" SourceId="1" SourceUrl="http://localhost:10009/Serwis1?disco" />
+    <MetadataFile FileName="Serwis11.xsd" MetadataType="Schema" ID="5088cb46-b8b9-4fbe-b345-4ca52d5c6965" SourceId="1" SourceUrl="http://localhost:10009/Serwis1?xsd=xsd1" />
+    <MetadataFile FileName="DuplexOperations.wsdl" MetadataType="Wsdl" ID="6409ff00-b645-4bb1-bdaf-109f3ff31f25" SourceId="1" SourceUrl="http://localhost:10009/Serwis1?wsdl" />
+    <MetadataFile FileName="Serwis12.xsd" MetadataType="Schema" ID="13392626-4688-42b8-9af1-50f612f79e23" SourceId="1" SourceUrl="http://localhost:10009/Serwis1?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

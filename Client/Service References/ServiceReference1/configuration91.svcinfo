@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="UjokSgG8rbmuD+q25yfkhbZu5bE=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="PMnBGHA6Qso8nR6nJbdp0v1Kasc=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="wsDualHttpBinding" name="endpoint1">
       <properties>
@@ -97,10 +97,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="endpoint1" contract="ServiceReference1.IDuplexOperations" bindingType="wsDualHttpBinding" address="http://localhost:10009/DuplexOperationService" bindingConfiguration="endpoint1">
+    <endpoint name="endpoint1" contract="ServiceReference1.IDuplexOperations" bindingType="wsDualHttpBinding" address="http://localhost:10009/Serwis1/DuplexOperationService" bindingConfiguration="endpoint1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:10009/DuplexOperationService</serializedValue>
+          <serializedValue>http://localhost:10009/Serwis1/DuplexOperationService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

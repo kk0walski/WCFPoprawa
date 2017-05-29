@@ -13,63 +13,43 @@ namespace Server
             ServiceEndpoint endpoint = mojHost.Description.Endpoints.Find(typeof(Contract.IDuplexOperations));
             ServiceHost mojHost2 = new ServiceHost(typeof(Service1));
             ServiceEndpoint endpoint2 = mojHost2.Description.Endpoints.Find(typeof(Contract.IService1));
-            /*
-            Uri baseAddress = new Uri("http://localhost:10009");
-            ServiceHost mojHost = new ServiceHost(typeof(DuplexOperations), baseAddress);
-
-            ServiceEndpoint endpoint =
-                mojHost.AddServiceEndpoint(typeof(IDuplexOperations),
-                new WSDualHttpBinding(), "DuplexOperationService");
-            //Metadane
-            ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-            smb.HttpGetEnabled = true;
-            mojHost.Description.Behaviors.Add(smb);
-            ServiceDebugBehavior debug = mojHost.Description.Behaviors.Find<ServiceDebugBehavior>();
-            if (debug == null)
-            {
-                mojHost.Description.Behaviors.Add(
-                        new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
-            }
-            else
-            {
-                if (!debug.IncludeExceptionDetailInFaults)
-                {
-                    debug.IncludeExceptionDetailInFaults = true;
-                }
-            }
-            */
-            /*Uri baseAddress2 = new Uri("net.tcp://localhost:20009");
-            ServiceHost mojHost2 = new ServiceHost(typeof(Service1),
-                baseAddress2);
-            NetTcpBinding b = new NetTcpBinding();
-            b.TransferMode = TransferMode.Streamed;
-            b.MaxReceivedMessageSize = 10000000;
-            ServiceEndpoint endpoint2 = mojHost2.AddServiceEndpoint(typeof(IService1), b, "Strumien");
-
-            ServiceMetadataBehavior smb2 = new ServiceMetadataBehavior();
-            smb2.HttpGetUrl = new Uri("http://localhost:20109");
-            smb2.HttpGetEnabled = true;
-            mojHost2.Description.Behaviors.Add(smb2);
-            ServiceDebugBehavior debug2 = mojHost2.Description.Behaviors.Find<ServiceDebugBehavior>();
-            if (debug2 == null)
-            {
-                mojHost2.Description.Behaviors.Add(
-                        new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
-            }
-            else
-            {
-                if (!debug2.IncludeExceptionDetailInFaults)
-                {
-                    debug2.IncludeExceptionDetailInFaults = true;
-                }
-            }
-            */
             try
             {
+                Console.WriteLine("\n--> Endpointy");
+                Console.WriteLine("\nSerwise endpoint {0}:", endpoint.Name);
+                Console.WriteLine("Binding: {0}", endpoint.Binding.ToString());
+                Console.WriteLine("ListenUri: {0}", endpoint.ListenUri.ToString());
+                Console.WriteLine("\nSerwise endpoint {0}:", endpoint2.Name);
+                Console.WriteLine("Binding: {0}", endpoint2.Binding.ToString());
+                Console.WriteLine("ListenUri: {0}", endpoint2.ListenUri.ToString());
                 mojHost.Open();
                 Console.WriteLine("Serwis 1 jest uruchomiony");
+                ContractDescription cd = ContractDescription.GetContract(typeof(IDuplexOperations));
+                Console.WriteLine("Informacje o kontrakcie");
+                Type contractType = cd.ContractType;
+                Console.WriteLine("\tContract type: {0}", contractType.ToString());
+                string name = cd.Name;
+                Console.WriteLine("\tName: {0}", name);
+                OperationDescriptionCollection odc = cd.Operations;
+                Console.WriteLine("\tOperacje");
+                foreach(OperationDescription od in odc)
+                {
+                    Console.WriteLine("\t\t" + od.Name);
+                }
                 mojHost2.Open();
                 Console.WriteLine("Serwis 2 jest uruchomiony");
+                ContractDescription cd2 = ContractDescription.GetContract(typeof(IService1));
+                Console.WriteLine("Informacje o kontrakcie");
+                Type contractType2 = cd2.ContractType;
+                Console.WriteLine("\tContract type: {0}", contractType2.ToString());
+                string name2 = cd2.Name;
+                Console.WriteLine("\tName: {0}", name2);
+                OperationDescriptionCollection odc2 = cd2.Operations;
+                Console.WriteLine("\tOperacje");
+                foreach (OperationDescription od2 in odc2)
+                {
+                    Console.WriteLine("\t\t" + od2.Name);
+                }
                 Console.WriteLine("Nacisnij <ENTER> aby zakonczyc");
                 Console.WriteLine();
                 Console.ReadLine();

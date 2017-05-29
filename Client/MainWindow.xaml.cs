@@ -3,13 +3,11 @@ using Client.ServiceReference2;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
 using Contract;
-using System.Threading;
 
 namespace Client
 {
@@ -64,8 +62,8 @@ namespace Client
         {
             this.lstData.Items.Clear();
             client.getAll();
-            Thread.Sleep(3000);
             this.lstData.ItemsSource = callback.List;
+            lstData.Items.Refresh();
         }
 
         private void lstData_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -80,8 +78,8 @@ namespace Client
         {
             this.lstData.Items.Clear();
             client.getLater(date.SelectedDate.Value);
-            Thread.Sleep(3000);
             this.lstData.ItemsSource = callback.List;
+            lstData.Items.Refresh();
         }
 
         //private void ImageRead(object sender, RoutedEventArgs e)
@@ -108,15 +106,30 @@ namespace Client
             set { _list = value; }
         }
 
+        public void Kolekcja(Kolekcja request)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Kolekcja([MessageParameter(Name = "kolekcja")] List<ListItem> kolekcja1)
         {
             List = kolekcja1;
             MessageBox.Show("Kolekcja zostala wczytana");
         }
 
+        public void Warunek(Warunek request)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Warunek(bool value)
         {
             Console.WriteLine("Warunek: {0}", value);
+        }
+
+        public void Wynik(Wynik request)
+        {
+            throw new NotImplementedException();
         }
 
         public void Wynik(string result)

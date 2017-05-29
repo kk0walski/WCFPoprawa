@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.ServiceModel;
+using System.Threading;
 
 namespace Contract
 {
@@ -45,6 +46,7 @@ namespace Contract
 
         private void savePicture(Stream instream, string filepath)
         {
+            
             const int bufferLength = 4098;  //dlugosc bufora
             int bytecount = 0;              //licznik
             int counter = 0;                //licznik pomocniczy
@@ -109,12 +111,15 @@ namespace Contract
         int id = 0;
         string nazwa;
         List<ImageData> obrazy;
+        List<ListItem> lista;
         IDuplexOperationsCallback callback = null;
 
         public DuplexOperations()
         {
+            lista = new List<ListItem>();
             obrazy = new List<ImageData>();
-            callback = OperationContext.Current.GetCallbackChannel<IDuplexOperationsCallback>();
+            callback = OperationContext.Current.
+                GetCallbackChannel<IDuplexOperationsCallback>();
         }
         public void addRecord(string plik)
         {
@@ -130,17 +135,18 @@ namespace Contract
 
         public void getAll()
         {
-            List<ListItem>  wynik = new List<ListItem>();
+            lista.Clear();
             foreach (ImageData data in obrazy)
             {
-                wynik.Add(new ListItem(data.ID, data.Name, data.Date, data.Size));
+                lista.Add(new ListItem(data.ID, data.Name, data.Date, data.Size));
             }
-            callback.Kolekcja(wynik.ToArray());
+            Thread.Sleep(10000);
+            callback.Kolekcja(lista);
         }
 
         public void getLater(DateTime data)
         {
-            List<ListItem> wynik = new List<ListItem>();
+            lista.Clear();
             foreach (ImageData dane in obrazy)
             {
                 if (dane.Date >= data)
@@ -150,10 +156,11 @@ namespace Contract
                     temp.Name = dane.Name;
                     temp.Data = dane.Date;
                     temp.Size = dane.Size;
-                    wynik.Add(temp);
+                    lista.Add(temp);
                 }
             }
-            callback.Kolekcja(wynik.ToArray());
+            Thread.Sleep(10000);
+            callback.Kolekcja(lista);
         }
 
         public void getName(string name)
@@ -166,7 +173,8 @@ namespace Contract
                     wynik.Add(new ListItem(dane.ID, dane.Name, dane.Date, dane.Size));
                 }
             }
-            callback.Kolekcja(wynik.ToArray());
+            Thread.Sleep(10000);
+            callback.Kolekcja(wynik);
         }
 
         public string getPath(string name)

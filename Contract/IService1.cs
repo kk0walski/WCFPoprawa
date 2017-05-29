@@ -55,7 +55,7 @@ namespace Contract
         [OperationContract(IsOneWay = true)]
         void Wynik(string result);
         [OperationContract(IsOneWay = true)]
-        void Kolekcja(ListItem[] kolekcja);
+        void Kolekcja(List<ListItem> kolekcja);
         [OperationContract(IsOneWay = true)]
         void Warunek(bool value);
     }
