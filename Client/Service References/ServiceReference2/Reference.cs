@@ -12,217 +12,77 @@ namespace Client.ServiceReference2 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IDuplexOperations", CallbackContract=typeof(Client.ServiceReference2.IDuplexOperationsCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
-    public interface IDuplexOperations {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IService1")]
+    public interface IService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getLater", ReplyAction="http://tempuri.org/IDuplexOperations/getLaterResponse")]
-        Contract.ListItem[] getLater(System.DateTime data);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/putPicture", ReplyAction="http://tempuri.org/IService1/putPictureResponse")]
+        void putPicture(int id, string nazwa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getLater", ReplyAction="http://tempuri.org/IDuplexOperations/getLaterResponse")]
-        System.Threading.Tasks.Task<Contract.ListItem[]> getLaterAsync(System.DateTime data);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/putPicture", ReplyAction="http://tempuri.org/IService1/putPictureResponse")]
+        System.Threading.Tasks.Task putPictureAsync(int id, string nazwa);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/addRecord")]
-        void addRecord(string nazwa);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getPicture", ReplyAction="http://tempuri.org/IService1/getPictureResponse")]
+        System.IO.Stream getPicture(int id, string name);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/addRecord")]
-        System.Threading.Tasks.Task addRecordAsync(string nazwa);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getPicture", ReplyAction="http://tempuri.org/IService1/getPictureResponse")]
+        System.Threading.Tasks.Task<System.IO.Stream> getPictureAsync(int id, string name);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getAll", ReplyAction="http://tempuri.org/IDuplexOperations/getAllResponse")]
-        Contract.ListItem[] getAll();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFile", ReplyAction="http://tempuri.org/IService1/addFileResponse")]
+        void addFile(System.IO.Stream picture);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getAll", ReplyAction="http://tempuri.org/IDuplexOperations/getAllResponse")]
-        System.Threading.Tasks.Task<Contract.ListItem[]> getAllAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/inSet")]
-        void inSet(string namePicture);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/inSet")]
-        System.Threading.Tasks.Task inSetAsync(string namePicture);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getPathFromId", ReplyAction="http://tempuri.org/IDuplexOperations/getPathFromIdResponse")]
-        string getPathFromId(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getPathFromId", ReplyAction="http://tempuri.org/IDuplexOperations/getPathFromIdResponse")]
-        System.Threading.Tasks.Task<string> getPathFromIdAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/getSize")]
-        void getSize();
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/getSize")]
-        System.Threading.Tasks.Task getSizeAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/resaizeImage")]
-        void resaizeImage(int id, int width, int height);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/resaizeImage")]
-        System.Threading.Tasks.Task resaizeImageAsync(int id, int width, int height);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getPath", ReplyAction="http://tempuri.org/IDuplexOperations/getPathResponse")]
-        string getPath(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getPath", ReplyAction="http://tempuri.org/IDuplexOperations/getPathResponse")]
-        System.Threading.Tasks.Task<string> getPathAsync(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getName", ReplyAction="http://tempuri.org/IDuplexOperations/getNameResponse")]
-        Contract.ListItem[] getName(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getName", ReplyAction="http://tempuri.org/IDuplexOperations/getNameResponse")]
-        System.Threading.Tasks.Task<Contract.ListItem[]> getNameAsync(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getID", ReplyAction="http://tempuri.org/IDuplexOperations/getIDResponse")]
-        int getID();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getID", ReplyAction="http://tempuri.org/IDuplexOperations/getIDResponse")]
-        System.Threading.Tasks.Task<int> getIDAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/setNazwa", ReplyAction="http://tempuri.org/IDuplexOperations/setNazwaResponse")]
-        void setNazwa(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/setNazwa", ReplyAction="http://tempuri.org/IDuplexOperations/setNazwaResponse")]
-        System.Threading.Tasks.Task setNazwaAsync(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getImageData", ReplyAction="http://tempuri.org/IDuplexOperations/getImageDataResponse")]
-        Contract.ImageData getImageData(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDuplexOperations/getImageData", ReplyAction="http://tempuri.org/IDuplexOperations/getImageDataResponse")]
-        System.Threading.Tasks.Task<Contract.ImageData> getImageDataAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addFile", ReplyAction="http://tempuri.org/IService1/addFileResponse")]
+        System.Threading.Tasks.Task addFileAsync(System.IO.Stream picture);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IDuplexOperationsCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/Wynik")]
-        void Wynik(string result);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/Kolekcja")]
-        void Kolekcja([System.ServiceModel.MessageParameterAttribute(Name="kolekcja")] Contract.ListItem[] kolekcja1);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IDuplexOperations/Warunek")]
-        void Warunek(bool value);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IDuplexOperationsChannel : Client.ServiceReference2.IDuplexOperations, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : Client.ServiceReference2.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class DuplexOperationsClient : System.ServiceModel.DuplexClientBase<Client.ServiceReference2.IDuplexOperations>, Client.ServiceReference2.IDuplexOperations {
+    public partial class Service1Client : System.ServiceModel.ClientBase<Client.ServiceReference2.IService1>, Client.ServiceReference2.IService1 {
         
-        public DuplexOperationsClient(System.ServiceModel.InstanceContext callbackInstance) : 
-                base(callbackInstance) {
+        public Service1Client() {
         }
         
-        public DuplexOperationsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
-                base(callbackInstance, endpointConfigurationName) {
+        public Service1Client(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
         }
         
-        public DuplexOperationsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public Service1Client(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public DuplexOperationsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public Service1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public DuplexOperationsClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, binding, remoteAddress) {
+        public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
         }
         
-        public Contract.ListItem[] getLater(System.DateTime data) {
-            return base.Channel.getLater(data);
+        public void putPicture(int id, string nazwa) {
+            base.Channel.putPicture(id, nazwa);
         }
         
-        public System.Threading.Tasks.Task<Contract.ListItem[]> getLaterAsync(System.DateTime data) {
-            return base.Channel.getLaterAsync(data);
+        public System.Threading.Tasks.Task putPictureAsync(int id, string nazwa) {
+            return base.Channel.putPictureAsync(id, nazwa);
         }
         
-        public void addRecord(string nazwa) {
-            base.Channel.addRecord(nazwa);
+        public System.IO.Stream getPicture(int id, string name) {
+            return base.Channel.getPicture(id, name);
         }
         
-        public System.Threading.Tasks.Task addRecordAsync(string nazwa) {
-            return base.Channel.addRecordAsync(nazwa);
+        public System.Threading.Tasks.Task<System.IO.Stream> getPictureAsync(int id, string name) {
+            return base.Channel.getPictureAsync(id, name);
         }
         
-        public Contract.ListItem[] getAll() {
-            return base.Channel.getAll();
+        public void addFile(System.IO.Stream picture) {
+            base.Channel.addFile(picture);
         }
         
-        public System.Threading.Tasks.Task<Contract.ListItem[]> getAllAsync() {
-            return base.Channel.getAllAsync();
-        }
-        
-        public void inSet(string namePicture) {
-            base.Channel.inSet(namePicture);
-        }
-        
-        public System.Threading.Tasks.Task inSetAsync(string namePicture) {
-            return base.Channel.inSetAsync(namePicture);
-        }
-        
-        public string getPathFromId(int id) {
-            return base.Channel.getPathFromId(id);
-        }
-        
-        public System.Threading.Tasks.Task<string> getPathFromIdAsync(int id) {
-            return base.Channel.getPathFromIdAsync(id);
-        }
-        
-        public void getSize() {
-            base.Channel.getSize();
-        }
-        
-        public System.Threading.Tasks.Task getSizeAsync() {
-            return base.Channel.getSizeAsync();
-        }
-        
-        public void resaizeImage(int id, int width, int height) {
-            base.Channel.resaizeImage(id, width, height);
-        }
-        
-        public System.Threading.Tasks.Task resaizeImageAsync(int id, int width, int height) {
-            return base.Channel.resaizeImageAsync(id, width, height);
-        }
-        
-        public string getPath(string name) {
-            return base.Channel.getPath(name);
-        }
-        
-        public System.Threading.Tasks.Task<string> getPathAsync(string name) {
-            return base.Channel.getPathAsync(name);
-        }
-        
-        public Contract.ListItem[] getName(string name) {
-            return base.Channel.getName(name);
-        }
-        
-        public System.Threading.Tasks.Task<Contract.ListItem[]> getNameAsync(string name) {
-            return base.Channel.getNameAsync(name);
-        }
-        
-        public int getID() {
-            return base.Channel.getID();
-        }
-        
-        public System.Threading.Tasks.Task<int> getIDAsync() {
-            return base.Channel.getIDAsync();
-        }
-        
-        public void setNazwa(string name) {
-            base.Channel.setNazwa(name);
-        }
-        
-        public System.Threading.Tasks.Task setNazwaAsync(string name) {
-            return base.Channel.setNazwaAsync(name);
-        }
-        
-        public Contract.ImageData getImageData(int id) {
-            return base.Channel.getImageData(id);
-        }
-        
-        public System.Threading.Tasks.Task<Contract.ImageData> getImageDataAsync(int id) {
-            return base.Channel.getImageDataAsync(id);
+        public System.Threading.Tasks.Task addFileAsync(System.IO.Stream picture) {
+            return base.Channel.addFileAsync(picture);
         }
     }
 }

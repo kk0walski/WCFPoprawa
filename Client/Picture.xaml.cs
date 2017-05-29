@@ -16,6 +16,7 @@ namespace Client
     {
 
         int id;
+        string Name;
         DuplexOperationsClient client;
         Service1Client client2;
         InstanceContext instanceContext;
@@ -26,7 +27,8 @@ namespace Client
             client = new DuplexOperationsClient(instanceContext);
             client2 = new Service1Client();
             id = ID;
-            PngBitmapDecoder decoder = new PngBitmapDecoder(client2.getPicture(ID, name),
+            this.Name = name;
+            PngBitmapDecoder decoder = new PngBitmapDecoder(client2.getPicture(id, Name),
                                                             BitmapCreateOptions.None,
                                                             BitmapCacheOption.OnLoad);
             BitmapSource source = decoder.Frames[0];

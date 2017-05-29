@@ -9,18 +9,43 @@ namespace Server
     {
         static void Main(string[] args)
         {
+            ServiceHost mojHost = new ServiceHost(typeof(DuplexOperations));
+            ServiceEndpoint endpoint = mojHost.Description.Endpoints.Find(typeof(Contract.IDuplexOperations));
+            ServiceHost mojHost2 = new ServiceHost(typeof(Service1));
+            ServiceEndpoint endpoint2 = mojHost2.Description.Endpoints.Find(typeof(Contract.IService1));
+            /*
             Uri baseAddress = new Uri("http://localhost:10009");
-            Uri baseAddress2 = new Uri("net.tcp://localhost:20009");
-
             ServiceHost mojHost = new ServiceHost(typeof(DuplexOperations), baseAddress);
-            ServiceHost mojHost2 = new ServiceHost(typeof(Service1), baseAddress2);
+
             ServiceEndpoint endpoint =
                 mojHost.AddServiceEndpoint(typeof(IDuplexOperations),
                 new WSDualHttpBinding(), "DuplexOperationService");
+            //Metadane
+            ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+            smb.HttpGetEnabled = true;
+            mojHost.Description.Behaviors.Add(smb);
+            ServiceDebugBehavior debug = mojHost.Description.Behaviors.Find<ServiceDebugBehavior>();
+            if (debug == null)
+            {
+                mojHost.Description.Behaviors.Add(
+                        new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
+            }
+            else
+            {
+                if (!debug.IncludeExceptionDetailInFaults)
+                {
+                    debug.IncludeExceptionDetailInFaults = true;
+                }
+            }
+            */
+            /*Uri baseAddress2 = new Uri("net.tcp://localhost:20009");
+            ServiceHost mojHost2 = new ServiceHost(typeof(Service1),
+                baseAddress2);
             NetTcpBinding b = new NetTcpBinding();
             b.TransferMode = TransferMode.Streamed;
             b.MaxReceivedMessageSize = 10000000;
             ServiceEndpoint endpoint2 = mojHost2.AddServiceEndpoint(typeof(IService1), b, "Strumien");
+
             ServiceMetadataBehavior smb2 = new ServiceMetadataBehavior();
             smb2.HttpGetUrl = new Uri("http://localhost:20109");
             smb2.HttpGetEnabled = true;
@@ -38,23 +63,7 @@ namespace Server
                     debug2.IncludeExceptionDetailInFaults = true;
                 }
             }
-            //Metadane
-            ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-            smb.HttpGetEnabled = true;
-            mojHost.Description.Behaviors.Add(smb);
-            ServiceDebugBehavior debug = mojHost.Description.Behaviors.Find<ServiceDebugBehavior>();
-            if(debug == null)
-            {
-                mojHost.Description.Behaviors.Add(
-                        new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
-            }
-            else
-            {
-                if (!debug.IncludeExceptionDetailInFaults)
-                {
-                    debug.IncludeExceptionDetailInFaults = true;
-                }
-            }
+            */
             try
             {
                 mojHost.Open();
@@ -65,7 +74,6 @@ namespace Server
                 Console.WriteLine();
                 Console.ReadLine();
                 mojHost.Close();
-                mojHost2.Close();
             }
             catch (CommunicationException ce)
             {

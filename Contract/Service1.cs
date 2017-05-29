@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
+using System.ServiceModel;
 
 namespace Contract
 {
@@ -18,7 +20,7 @@ namespace Contract
             string dir = Path.GetDirectoryName(path2);
 
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-            File.Copy(path, path2);
+            File.Copy(path, path2, true);
         }
         public void addFile(Stream picture)
         {
@@ -100,22 +102,25 @@ namespace Contract
             }
         }
     }
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class DuplexOperations : IDuplexOperations
     {
         const string PATH = @"C:\Users\karol\documents\visual studio 2015\Projects\WCFPoprawa\Server\Pictures";
         int id = 0;
         string nazwa;
-        Collection<ImageData> obrazy;
+        List<ImageData> obrazy;
+        IDuplexOperationsCallback callback = null;
 
         public DuplexOperations()
         {
-            obrazy = new Collection<ImageData>();
+            obrazy = new List<ImageData>();
+            callback = OperationContext.Current.GetCallbackChannel<IDuplexOperationsCallback>();
         }
-        public void addRecord(string nazwa)
+        public void addRecord(string plik)
         {
-            string path = Path.Combine(PATH, Convert.ToString(id), nazwa);
-            Image image = Image.FromFile(path);
-            FileInfo info = new FileInfo(path);
+            string path = Path.Combine(PATH, Convert.ToString(id), Path.GetFileName(plik));
+            Image image = Image.FromFile(plik);
+            FileInfo info = new FileInfo(plik);
             ImageData data = new ImageData(id, image.Width, image.Height, info.Extension, info.Name, info.CreationTime, info.Length);
             data.Widht = image.Width;
             data.Height = image.Height;
@@ -123,24 +128,19 @@ namespace Contract
             id++;
         }
 
-        public Collection<ListItem> getAll()
+        public void getAll()
         {
-            Collection<ListItem> wynik = new Collection<ListItem>();
-            foreach(ImageData data in obrazy)
+            List<ListItem>  wynik = new List<ListItem>();
+            foreach (ImageData data in obrazy)
             {
-                ListItem temp = new ListItem(data.ID, data.Name, data.Date, data.Size);
-                temp.ID = data.ID;
-                temp.Name = data.Name;
-                temp.Data = data.Date;
-                temp.Size = data.Size;
-                wynik.Add(temp);
+                wynik.Add(new ListItem(data.ID, data.Name, data.Date, data.Size));
             }
-            return wynik;
+            callback.Kolekcja(wynik.ToArray());
         }
 
-        public Collection<ListItem> getLater(DateTime data)
+        public void getLater(DateTime data)
         {
-            Collection<ListItem> wynik = new Collection<ListItem>();
+            List<ListItem> wynik = new List<ListItem>();
             foreach (ImageData dane in obrazy)
             {
                 if (dane.Date >= data)
@@ -153,12 +153,12 @@ namespace Contract
                     wynik.Add(temp);
                 }
             }
-            return wynik;
+            callback.Kolekcja(wynik.ToArray());
         }
 
-        public Collection<ListItem> getName(string name)
+        public void getName(string name)
         {
-            Collection<ListItem> wynik = new Collection<ListItem>();
+            List<ListItem> wynik = new List<ListItem>();
             foreach (ImageData dane in obrazy)
             {
                 if (dane.Name.Equals(name))
@@ -166,7 +166,7 @@ namespace Contract
                     wynik.Add(new ListItem(dane.ID, dane.Name, dane.Date, dane.Size));
                 }
             }
-            return wynik;
+            callback.Kolekcja(wynik.ToArray());
         }
 
         public string getPath(string name)
@@ -200,7 +200,7 @@ namespace Contract
             bool wynik = false;
             foreach (ImageData dane in obrazy)
             {
-                if(dane.Name.Equals(namePicture))
+                if (dane.Name.Equals(namePicture))
                 {
                     wynik = true;
                     break;

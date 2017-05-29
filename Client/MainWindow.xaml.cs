@@ -2,11 +2,14 @@
 using Client.ServiceReference2;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
+using Contract;
+using System.Threading;
 
 namespace Client
 {
@@ -17,12 +20,14 @@ namespace Client
     {
         DuplexOperationsClient client;
         Service1Client client2;
-        InstanceContext instanceContext;
+        InstanceContext context;
+        DuplexOperationsCallback callback;
         public MainWindow()
         {
             InitializeComponent();
-            instanceContext = new InstanceContext(new DuplexOperationsCallback());
-            client = new DuplexOperationsClient(instanceContext);
+            callback = new DuplexOperationsCallback();
+            context = new InstanceContext(callback);
+            client = new DuplexOperationsClient(context);
             client2 = new Service1Client();
         }
 
@@ -46,7 +51,7 @@ namespace Client
                 {
                     client2.addFile(File.OpenRead(openFile.FileName));
                     client2.putPicture(client.getID(), Path.GetFileName(openFile.FileName));
-                    client.addRecord(nazwaPliku);
+                    client.addRecord(openFile.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -55,10 +60,12 @@ namespace Client
             }
 
         }
-
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-
+            this.lstData.Items.Clear();
+            client.getAll();
+            Thread.Sleep(3000);
+            this.lstData.ItemsSource = callback.List;
         }
 
         private void lstData_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -72,8 +79,9 @@ namespace Client
         private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             this.lstData.Items.Clear();
-            Contract.ListItem[] lista = client.getLater(date.SelectedDate.Value);
-            this.lstData.ItemsSource = lista;
+            client.getLater(date.SelectedDate.Value);
+            Thread.Sleep(3000);
+            this.lstData.ItemsSource = callback.List;
         }
 
         //private void ImageRead(object sender, RoutedEventArgs e)
@@ -90,17 +98,17 @@ namespace Client
         //}
     }
 
-    public class DuplexOperationsCallback : IDuplexOperationsCallback
+    public class DuplexOperationsCallback : ServiceReference1.IDuplexOperationsCallback
     {
-        private Contract.ListItem[] _list;
+        private List<ListItem> _list;
 
-        public Contract.ListItem[] List
+        public List<ListItem> List
         {
             get { return _list; }
             set { _list = value; }
         }
 
-        public void Kolekcja(Contract.ListItem[] kolekcja1)
+        public void Kolekcja([MessageParameter(Name = "kolekcja")] List<ListItem> kolekcja1)
         {
             List = kolekcja1;
             MessageBox.Show("Kolekcja zostala wczytana");

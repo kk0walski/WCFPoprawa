@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -21,13 +21,13 @@ namespace Contract
     [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(IDuplexOperationsCallback))]
     public interface IDuplexOperations
     {
-        [OperationContract]
-        Collection<ListItem> getLater(DateTime data);
+        [OperationContract(IsOneWay = true)]
+        void getLater(DateTime data);
 
         [OperationContract(IsOneWay = true)]
         void addRecord(string nazwa);
-        [OperationContract]
-        Collection<ListItem> getAll();
+        [OperationContract(IsOneWay = true)]
+        void getAll();
 
         [OperationContract(IsOneWay = true)]
         void inSet(string namePicture);
@@ -39,8 +39,8 @@ namespace Contract
         void resaizeImage(int id, int width, int height);
         [OperationContract]
         string getPath(string name);
-        [OperationContract]
-        Collection<ListItem> getName(string name);
+        [OperationContract(IsOneWay = true)]
+        void getName(string name);
         [OperationContract]
         int getID();
         [OperationContract]
@@ -135,10 +135,10 @@ namespace Contract
     [DataContract]
     public class ListItem
     {
-        int _id;
-        string _name;
-        DateTime _date;
-        long _size;
+        private int _id;
+        private string _name;
+        private DateTime _date;
+        private long _size;
 
         public ListItem(int id, string name, DateTime date, long size)
         {
@@ -168,5 +168,4 @@ namespace Contract
             set { _size = value; }
         }
     }
-
 }

@@ -121,6 +121,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ServiceReference1\DuplexOperations.wsdl" />
     <None Include="Service References\ServiceReference1\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -130,17 +131,16 @@
     <None Include="Service References\ServiceReference1\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service1.wsdl" />
-    <None Include="Service References\ServiceReference2\DuplexOperations.wsdl" />
+    <None Include="Service References\ServiceReference2\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference2\item1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference2\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference2\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Service References\ServiceReference2\Service1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -163,6 +163,9 @@
     <WCFMetadataStorage Include="Service References\ServiceReference2\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ServiceReference1\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -173,9 +176,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReference2\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReference2\configuration91.svcinfo" />
